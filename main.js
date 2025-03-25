@@ -175,74 +175,18 @@ function setupCameraControls() {
     camera.updateProjectionMatrix();
   });
 
-  // Add rotation controls
-  const rotX = document.getElementById('rotX');
-  const rotY = document.getElementById('rotY');
-  const rotZ = document.getElementById('rotZ');
-
-  // Set initial values in degrees
-  rotX.value = THREE.MathUtils.radToDeg(camera.rotation.x).toFixed(1);
-  rotY.value = THREE.MathUtils.radToDeg(camera.rotation.y).toFixed(1);
-  rotZ.value = THREE.MathUtils.radToDeg(camera.rotation.z).toFixed(1);
-  // Add event listeners for rotation changes
-  rotX.addEventListener('change', () => {
-    const degrees = parseFloat(rotX.value) || 0;
-    camera.rotation.x = THREE.MathUtils.degToRad(degrees);
-    console.log(camera.rotation.x, "ppppppppppp");
-    camera.updateProjectionMatrix();
-  });
-
-  rotY.addEventListener('change', () => {
-    const degrees = parseFloat(rotY.value) || 0;
-    camera.rotation.y = THREE.MathUtils.degToRad(degrees);
-    camera.updateProjectionMatrix();
-  });
-
-  rotZ.addEventListener('change', () => {
-    const degrees = parseFloat(rotZ.value) || 0;
-    camera.rotation.z = THREE.MathUtils.degToRad(degrees);
-    camera.updateProjectionMatrix();
-  });
-
-  // // Disable OrbitControls when using direct rotation inputs
-  // rotX.addEventListener('focus', () => controls.enabled = false);
-  // rotY.addEventListener('focus', () => controls.enabled = false);
-  // rotZ.addEventListener('focus', () => controls.enabled = false);
-
-  // // Re-enable OrbitControls when done with direct rotation inputs
-  // rotX.addEventListener('blur', () => controls.enabled = true);
-  // rotY.addEventListener('blur', () => controls.enabled = true);
-  // rotZ.addEventListener('blur', () => controls.enabled = true);
 }
 
 function setupPlaneControls(planeMesh) {
-    const planeX = document.getElementById('planeX');
-    const planeY = document.getElementById('planeY');
-    const planeZ = document.getElementById('planeZ');
+
     const planeRotX = document.getElementById('planeRotX');
     const planeRotY = document.getElementById('planeRotY');
     const planeRotZ = document.getElementById('planeRotZ');
 
-    // Set initial values
-    planeX.value = planeMesh.position.x;
-    planeY.value = planeMesh.position.y;
-    planeZ.value = planeMesh.position.z;
+
     planeRotX.value = planeMesh.rotation.x;
     planeRotY.value = planeMesh.rotation.y;
     planeRotZ.value = planeMesh.rotation.z;
-
-    // Position controls
-    planeX.addEventListener('change', () => {
-        planeMesh.position.x = parseFloat(planeX.value);
-    });
-
-    planeY.addEventListener('change', () => {
-        planeMesh.position.y = parseFloat(planeY.value);
-    });
-
-    planeZ.addEventListener('change', () => {
-        planeMesh.position.z = parseFloat(planeZ.value);
-    });
 
     // Rotation controls
     planeRotX.addEventListener('change', () => {
