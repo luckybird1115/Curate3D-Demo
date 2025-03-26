@@ -487,14 +487,38 @@ function setupCameraControls() {
 
 function setupPlaneControls(planeMesh) {
 
+  const planeX = document.getElementById('planeX');
+  const planeY = document.getElementById('planeY');
+  const planeZ = document.getElementById('planeZ');
+
   const planeRotX = document.getElementById('planeRotX');
   const planeRotY = document.getElementById('planeRotY');
   const planeRotZ = document.getElementById('planeRotZ');
 
   // Set initial values
+
+  planeX.value = planeMesh.position.x;
+  planeY.value = planeMesh.position.y;
+  planeZ.value = planeMesh.position.z;
+
   planeRotX.value = planeMesh.rotation.x;
   planeRotY.value = planeMesh.rotation.y;
   planeRotZ.value = planeMesh.rotation.z;
+
+
+
+  // Position controls
+  planeX.addEventListener('change', () => {
+    planeMesh.position.x = parseFloat(planeX.value);
+  });
+
+  planeY.addEventListener('change', () => {
+    planeMesh.position.y = parseFloat(planeY.value);
+  });
+
+  planeZ.addEventListener('change', () => {
+    planeMesh.position.z = parseFloat(planeZ.value);
+  });
 
   // Rotaton controls
   planeRotX.addEventListener('change', () => {
